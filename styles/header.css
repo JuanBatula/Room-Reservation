@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+}
+
+.container {
+    background-color: rgb(229, 229, 229);
+    width: 100%;
+    margin: 0;
+}
+
+.cit-logo {
+    width: 400px;
+    margin-left: 30px;
+}
