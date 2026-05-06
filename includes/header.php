@@ -17,6 +17,16 @@
 
     <header class="container">
       <img src="images/citlogo.png" class="cit-logo">
+
+      <!-- ayoha ni boiii.
+       pa chadaha -->
+      <hr>
+      <a href="dashboard.php">Dashboard</a> |
+      <a href="bookings.php">Bookings</a> |
+      <a href="rooms.php">Rooms</a> |
+      <a href="admins.php">Admins</a> |
+      <a href="logout.php">Logout</a>
+      <hr>
     </header>
 
 
