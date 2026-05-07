@@ -36,13 +36,17 @@ if(isset($_POST['btnLogin'])){
 
             $checkAdmin = mysqli_query($connection,"SELECT * FROM tbadmin WHERE user_id=$user_id");
 
+            $checkStudent = mysqli_query($connection,"SELECT * FROM tbstudent WHERE user_id='$user_id'");
+
+             $checkFaculty = mysqli_query($connection,"SELECT * FROM tbfaculty WHERE user_id='$user_id'");
+
             if(mysqli_num_rows($checkAdmin) > 0){
                 $_SESSION['admin_id'] = $user_id;
                 header("location: admin/dashboard.php");
-            } else {
+            } else if(mysqli_num_rows($checkStudent) > 0 || mysqli_num_rows($checkFaculty) > 0) {
                 $_SESSION['user_id'] = $user_id;
                 header("location: user/dashboard.php");
-            }
+            } 
 			exit();
         } else {
             echo "<script language='javascript'>
