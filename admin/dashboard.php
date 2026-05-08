@@ -1,6 +1,6 @@
 <?php
 include '../connect.php';
-include '../includes/header.php';
+require_once '../includes/header.php';
 
 $totalRooms = mysqli_fetch_assoc(mysqli_query($connection,"SELECT COUNT(*) total FROM tbroom"))['total'];
 

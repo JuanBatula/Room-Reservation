@@ -16,7 +16,7 @@
   <body>
 
     <header class="container">
-      <img src="images/citlogo.png" class="cit-logo">
+      <img src="../images/citlogo.png" class="cit-logo">
 
       <!-- ayoha ni boiii.
        pa chadaha -->
