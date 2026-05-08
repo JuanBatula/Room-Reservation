@@ -15,21 +15,10 @@
                     <p>Access world-class facilities, modern study pods, and fully-equipped lecture halls for your academic and collaborative needs.</p>
                 </header>
 
-                <form action="login.php" method="POST" class="login-form">
-                    <div class="input-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="juan.delacruz@cit.edu" required>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="******" required>
-                    </div>
-
-                    <button type="submit" name="login" class="btn-login">Login</button>
-                    <button class="btn-register"><a href="register.php">Register</a></button><br>
-                    
-                </form>
+                <div class="button-group">
+                    <a href="login.php" class="btn-login">Login</a>
+                    <a href="register.php" class="btn-register">Register</a>
+                </div>
             </div>
         </div>
     </div>

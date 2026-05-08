@@ -7,19 +7,18 @@ body, html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* The background image container */
+/* Background Image with CIT Building */
 .hero-section {
-    background-image: url('../images/GLE-Building.jpg'); /* References your images folder */
+    background-image: url('../images/GLE-Building.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Keeps image still while scrolling */
     height: 100vh;
     width: 100%;
 }
 
-/* The "Transparent Background" effect using RGBA */
+/* Transparent Overlay Effect */
 .overlay {
-    background-color: rgba(45, 10, 10, 0.7); /* Dark reddish-brown at 70% transparency */
+    background-color: rgba(45, 10, 10, 0.75); /* Semi-transparent reddish-brown */
     height: 100%;
     width: 100%;
     display: flex;
@@ -31,72 +30,64 @@ body, html {
     max-width: 500px;
     width: 90%;
     color: white;
+    text-align: center;
 }
 
-/* Branding & Text Styles */
+/* Typography & Branding */
 .hero-text h1 {
     font-size: 3rem;
     font-weight: 800;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .hero-text h1 span {
-    color: #FFC107; /* CIT Yellow/Gold */
+    color: #FFC107; /* CIT Gold highlight */
 }
 
 .hero-text p {
     font-size: 1rem;
-    line-height: 1.4;
-    margin-bottom: 30px;
+    line-height: 1.5;
+    margin-bottom: 40px;
     opacity: 0.9;
 }
 
-/* Form Layout */
-.login-form {
+/* Button Group Styling */
+.button-group {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    align-items: center;
 }
 
-.input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.input-group label {
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-.input-group input {
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    font-size: 1rem;
-}
-
-/* Button Styles */
 .btn-login {
     background-color: #A30000; /* CIT Red */
     color: white;
-    padding: 12px;
-    border: none;
+    text-decoration: none;
+    padding: 15px;
     border-radius: 10px;
     font-size: 1.2rem;
     font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #820000;
 }
 
 .btn-register {
-    background-color: #6c757d;
+    background-color: #6c757d; /* Grey secondary button */
     color: white;
-    padding: 12px;
-    border: none;
+    text-decoration: none;
+    padding: 10px;
     border-radius: 10px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
-    cursor: pointer;
+    width: 200px;
     margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+.btn-register:hover {
+    background-color: #5a6268;
 }
