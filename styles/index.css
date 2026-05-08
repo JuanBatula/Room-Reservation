@@ -1,0 +1,102 @@
+/* Ensure the body takes up the full screen */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* The background image container */
+.hero-section {
+    background-image: url('../images/GLE-Building.jpg'); /* References your images folder */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keeps image still while scrolling */
+    height: 100vh;
+    width: 100%;
+}
+
+/* The "Transparent Background" effect using RGBA */
+.overlay {
+    background-color: rgba(45, 10, 10, 0.7); /* Dark reddish-brown at 70% transparency */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    max-width: 500px;
+    width: 90%;
+    color: white;
+}
+
+/* Branding & Text Styles */
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.hero-text h1 span {
+    color: #FFC107; /* CIT Yellow/Gold */
+}
+
+.hero-text p {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* Form Layout */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group label {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.input-group input {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+}
+
+/* Button Styles */
+.btn-login {
+    background-color: #A30000; /* CIT Red */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-admin {
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    width: 180px;
+    margin: 15px auto 0;
+}
