@@ -25,7 +25,7 @@
       <a href="bookings.php">Bookings</a> |
       <a href="rooms.php">Rooms</a> |
       <a href="admins.php">Admins</a> |
-      <a href="logout.php">Logout</a>
+      <a href="../logout.php">Logout</a>
       <hr>
     </header>
 
