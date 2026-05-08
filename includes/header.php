@@ -10,7 +10,7 @@
   <body>
 
     <header class="container">
-      <img src="../images/citlogo.png" class="cit-logo" alt="CIT Logo">
+      <img src="../images/citofficiallogo.png" class="cit-logo" alt="CIT Logo">
       <a href="dashboard.php">Dashboard</a>
       <a href="bookings.php">Bookings</a>
       <a href="rooms.php">Rooms</a>
