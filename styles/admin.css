@@ -58,12 +58,10 @@ header.container {
 }
 
 header.container img.cit-logo {
-    width: 140px;
-    height: auto;
+    width: auto;
+    height: 44px;
     margin-left: 0;
-    background: var(--white);
-    border-radius: 6px;
-    padding: 4px 8px;
+    object-fit: contain;
 }
 
 .nav-divider {

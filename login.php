@@ -11,7 +11,7 @@
     <div class="login-hero">
         <div class="hero-deco"></div>
         <div class="hero-content">
-            <img src="images/citlogo.png" alt="CIT Logo" class="hero-logo">
+            <img src="images/citofficiallogo.png" alt="CIT Logo" class="hero-logo">
             <div class="hero-eyebrow">Room Reservation System</div>
             <h1 class="hero-title">Reserve Your<br>Space At <span>CIT</span></h1>
             <p class="hero-desc">Access world-class facilities, modern study pods, and fully-equipped lecture halls for your academic and collaborative needs.</p>
