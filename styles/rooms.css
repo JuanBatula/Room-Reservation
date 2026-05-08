@@ -1,0 +1,347 @@
+:root {
+    --maroon:       #8a252c;
+    --maroon-dark:  #6b1a20;
+    --maroon-light: #f5e8e9;
+    --gold:         #f4c522;
+    --gold-dark:    #c9a01b;
+    --gold-light:   #fef9e7;
+    --text:         #1a1a1a;
+    --text-muted:   #6b6b6b;
+    --border:       #e5e5e5;
+    --white:        #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ── Top bar ─────────────────────────────────────────── */
+.topbar {
+    background: var(--maroon);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar h1 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--white);
+    margin: 0;
+    letter-spacing: 0.01em;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.topbar-accent {
+    width: 4px;
+    height: 24px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+.gold-bar {
+    height: 3px;
+    background: var(--gold);
+}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.btn-add {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: var(--gold);
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--maroon-dark);
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+}
+
+.btn-add:hover {
+    background: var(--gold-dark);
+    color: var(--white);
+}
+
+/* ── Page wrapper ────────────────────────────────────── */
+.page {
+    padding: 1.5rem;
+}
+
+/* ── Stat cards ──────────────────────────────────────── */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.stat {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--maroon);
+    border-radius: 10px;
+    padding: 14px 16px;
+}
+
+.stat.gold-accent {
+    border-top-color: var(--gold-dark);
+}
+
+.stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-val {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--maroon);
+}
+
+.stat.gold-accent .stat-val {
+    color: var(--gold-dark);
+}
+
+.stat-val.gray {
+    color: #888;
+}
+
+/* ── Search row ──────────────────────────────────────── */
+.search-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+}
+
+.search-wrap {
+    position: relative;
+    flex: 1;
+}
+
+.search-wrap i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.search-wrap input {
+    width: 100%;
+    padding: 9px 12px 9px 34px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--white);
+}
+
+.search-wrap input:focus {
+    outline: none;
+    border-color: var(--maroon);
+}
+
+.filter-select {
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--white);
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--maroon);
+}
+
+/* ── Table ───────────────────────────────────────────── */
+.table-wrap {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+thead {
+    background: var(--maroon);
+}
+
+thead th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 11px 14px;
+}
+
+thead th:first-child {
+    color: var(--gold);
+}
+
+tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.1s;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background: var(--maroon-light);
+}
+
+td {
+    padding: 13px 14px;
+    vertical-align: middle;
+}
+
+.room-name {
+    font-weight: 500;
+    color: var(--maroon-dark);
+}
+
+.room-id {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.cap {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+/* ── Badges ──────────────────────────────────────────── */
+.badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.badge-available {
+    background: #e9f5e9;
+    color: #2d6a2d;
+}
+
+.badge-occupied {
+    background: var(--gold-light);
+    color: var(--gold-dark);
+    border: 1px solid #f0d080;
+}
+
+.badge-unavailable {
+    background: var(--maroon-light);
+    color: var(--maroon);
+    border: 1px solid #e0b0b3;
+}
+
+/* ── Row action buttons ──────────────────────────────── */
+.actions {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-edit {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 11px;
+    border-radius: 7px;
+    border: 1px solid var(--maroon);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    background: transparent;
+    color: var(--maroon);
+    text-decoration: none;
+    transition: background 0.12s, color 0.12s;
+}
+
+.btn-edit:hover {
+    background: var(--maroon);
+    color: var(--white);
+}
+
+.btn-del {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 11px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: border-color 0.12s, color 0.12s, background 0.12s;
+}
+
+.btn-del:hover {
+    border-color: #c0392b;
+    color: #c0392b;
+    background: #fdf0f0;
+}
+
+/* ── Pagination ──────────────────────────────────────── */
+.pg-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.pg-btns {
+    display: flex;
+    gap: 4px;
+}
+
+.pg-btn {
+    padding: 5px 10px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--text);
+}
+
+.pg-btn.active {
+    background: var(--maroon);
+    color: var(--white);
+    border-color: var(--maroon);
+}
