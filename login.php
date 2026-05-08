@@ -3,23 +3,53 @@
     include 'connect.php';
 ?>
 
-<link rel="stylesheet" href="styles/header.css">
+<link rel="stylesheet" href="styles/login.css">
 
-<div>
+<div class="login-page">
 
-    <h2>Login</h2>
+    <!-- ── Left: brand panel ── -->
+    <div class="login-hero">
+        <div class="hero-deco"></div>
+        <div class="hero-content">
+            <img src="images/citlogo.png" alt="CIT Logo" class="hero-logo">
+            <div class="hero-eyebrow">Room Reservation System</div>
+            <h1 class="hero-title">Reserve Your<br>Space At <span>CIT</span></h1>
+            <p class="hero-desc">Access world-class facilities, modern study pods, and fully-equipped lecture halls for your academic and collaborative needs.</p>
+            <div class="hero-chips">
+                <span class="chip">Lecture Halls</span>
+                <span class="chip">Study Pods</span>
+                <span class="chip">Labs</span>
+                <span class="chip">Conference Rooms</span>
+            </div>
+        </div>
+    </div>
 
-	<form method="post">
-		<pre>			
-			Email:<input type="text" name="txtemail">	
-			Password:<input type="password" name="txtpassword">				
-			
-			<input type="submit" name="btnLogin" value="Login"> 
-		</pre>
-	</form>
+    <!-- ── Right: form panel ── -->
+    <div class="login-form-panel">
+        <div class="login-box">
+            <div class="gold-line"></div>
+            <h2>Welcome back</h2>
+            <p class="subtitle">Sign in to your account to continue</p>
+
+            <form method="post">
+                <div class="field-group">
+                    <label for="txtemail">Email address</label>
+                    <input type="text" id="txtemail" name="txtemail" placeholder="you@cit.edu">
+                </div>
+                <div class="field-group">
+                    <label for="txtpassword">Password</label>
+                    <input type="password" id="txtpassword" name="txtpassword" placeholder="••••••••">
+                </div>
+                <input type="submit" name="btnLogin" value="Sign In" class="btn-login-submit">
+            </form>
+
+            <div class="login-footer">
+                Don't have an account? <a href="register.php">Register here</a>
+            </div>
+        </div>
+    </div>
+
 </div>
-
-
 
 <?php
 if(isset($_POST['btnLogin'])){

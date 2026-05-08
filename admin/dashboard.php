@@ -9,14 +9,33 @@ $totalBookings = mysqli_fetch_assoc(mysqli_query($connection, "SELECT COUNT(*) t
 $totalUsers = mysqli_fetch_assoc(mysqli_query($connection, "SELECT COUNT(*) total FROM tbuser"))['total'];
 ?>
 
-<h2>Admin Dashboard</h2>
+<div class="admin-body">
 
-<pre>
-Total Rooms:      <?php echo $totalRooms; ?>
+    <div class="page-header">
+        <div class="page-header-left">
+            <div class="page-header-accent"></div>
+            <h2>Dashboard</h2>
+        </div>
+    </div>
 
-Total Bookings:   <?php echo $totalBookings; ?>
+    <div class="dash-stats">
+        <div class="dash-stat">
+            <div class="stat-icon">🏛️</div>
+            <div class="stat-label">Total Rooms</div>
+            <div class="stat-value"><?php echo $totalRooms; ?></div>
+        </div>
+        <div class="dash-stat gold">
+            <div class="stat-icon">📋</div>
+            <div class="stat-label">Total Bookings</div>
+            <div class="stat-value"><?php echo $totalBookings; ?></div>
+        </div>
+        <div class="dash-stat green">
+            <div class="stat-icon">👥</div>
+            <div class="stat-label">Total Users</div>
+            <div class="stat-value"><?php echo $totalUsers; ?></div>
+        </div>
+    </div>
 
-Total Users:      <?php echo $totalUsers; ?>
-</pre>
+</div>
 
 <?php include '../includes/footer.php'; ?>

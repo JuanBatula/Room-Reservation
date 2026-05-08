@@ -1,0 +1,282 @@
+/* ═══════════════════════════════════════════════════
+   login.css — CIT Room Reservation Login Page
+   ═══════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+    --maroon:       #8a252c;
+    --maroon-dark:  #6b1a20;
+    --maroon-deeper:#4a1018;
+    --gold:         #f4c522;
+    --gold-dark:    #c9a01b;
+    --white:        #ffffff;
+    --off-white:    #fdf8f2;
+    --text:         #1a1a1a;
+    --text-muted:   #888;
+    --border:       rgba(255,255,255,0.15);
+    --input-bg:     rgba(255,255,255,0.08);
+    --input-focus:  rgba(244,197,34,0.25);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Layout ────────────────────────────────────────── */
+.login-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+/* ── Left panel — brand/hero ───────────────────────── */
+.login-hero {
+    position: relative;
+    background: linear-gradient(145deg, var(--maroon-deeper) 0%, var(--maroon) 60%, #b03040 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem;
+    overflow: hidden;
+}
+
+.login-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../images/GLE-Building.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.18;
+    mix-blend-mode: luminosity;
+}
+
+/* Decorative geometric lines */
+.login-hero::after {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 360px;
+    height: 360px;
+    border: 60px solid rgba(244, 197, 34, 0.08);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-deco {
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 280px;
+    height: 280px;
+    border: 40px solid rgba(244, 197, 34, 0.06);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-logo {
+    width: 180px;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+}
+
+.hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+}
+
+.hero-title span {
+    color: var(--gold);
+}
+
+.hero-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.65);
+    max-width: 340px;
+    margin-bottom: 2.5rem;
+}
+
+.hero-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.chip {
+    padding: 5px 12px;
+    border: 1px solid rgba(244,197,34,0.35);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.04em;
+}
+
+/* ── Right panel — form ────────────────────────────── */
+.login-form-panel {
+    background: var(--off-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2.5rem;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--maroon-dark);
+    margin-bottom: 0.4rem;
+}
+
+.login-box .subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 2.25rem;
+}
+
+/* ── Form fields ───────────────────────────────────── */
+.field-group {
+    margin-bottom: 1.1rem;
+}
+
+.field-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+.field-group input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field-group input:focus {
+    outline: none;
+    border-color: var(--maroon);
+    box-shadow: 0 0 0 3px rgba(138,37,44,0.1);
+}
+
+.field-group input::placeholder {
+    color: #bbb;
+}
+
+/* ── Submit button ─────────────────────────────────── */
+.btn-login-submit {
+    width: 100%;
+    padding: 13px;
+    margin-top: 1.5rem;
+    border: none;
+    border-radius: 10px;
+    background: var(--maroon);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(138,37,44,0.25);
+}
+
+.btn-login-submit:hover {
+    background: var(--maroon-dark);
+    box-shadow: 0 6px 20px rgba(138,37,44,0.35);
+    transform: translateY(-1px);
+}
+
+.btn-login-submit:active {
+    transform: translateY(0);
+}
+
+/* ── Divider / footer ──────────────────────────────── */
+.login-footer {
+    margin-top: 2rem;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.login-footer a {
+    color: var(--maroon);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+.gold-line {
+    width: 40px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin: 0 0 1.75rem 0;
+}
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 768px) {
+    .login-page {
+        grid-template-columns: 1fr;
+    }
+
+    .login-hero {
+        padding: 2.5rem 2rem;
+        min-height: 260px;
+        justify-content: flex-end;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .login-form-panel {
+        padding: 2rem 1.5rem;
+    }
+}
