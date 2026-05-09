@@ -40,7 +40,7 @@
                     <label for="txtpassword">Password</label>
                     <input type="password" id="txtpassword" name="txtpassword" placeholder="••••••••">
                 </div>
-                <input type="submit" name="btnLogin" value="Sign In" class="btn-login-submit">
+                <input type="submit" name="btnLogin" value="Log In" class="btn-login-submit">
             </form>
 
             <div class="login-footer">

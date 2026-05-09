@@ -2,18 +2,7 @@
    index.css — CIT Room Reservation Landing Page
    ═══════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
-
-:root {
-    --maroon:        #8a252c;
-    --maroon-dark:   #6b1a20;
-    --maroon-deeper: #4a1018;
-    --gold:          #f4c522;
-    --gold-dark:     #c9a01b;
-    --white:         #ffffff;
-    --text-dim:      rgba(255, 255, 255, 0.80);
-    --text-faint:    rgba(255, 255, 255, 0.60);
-}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap');
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -32,7 +21,7 @@ body, html {
     background-image: url('../images/GLE-Building.jpg');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     position: relative;
 }
@@ -82,8 +71,8 @@ body, html {
 .login-container {
     position: relative;
     z-index: 1;
-    max-width: 500px;
     width: 100%;
+    max-width: 480px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -91,56 +80,61 @@ body, html {
 }
 
 /* ── Logo ──────────────────────────────────────────── */
-.site-logo {
-    width: 72px;
-    height: 72px;
+.login-container img.site-logo {
+    display: block;
+    width: 80px;
+    height: 80px;
+    max-width: 80px;
+    max-height: 80px;
     object-fit: contain;
-    margin-bottom: 1.5rem;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
+    margin: 0 auto 1.75rem;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
 }
 
-/* ── Hero text block ───────────────────────────────── */
+/* ── Hero text ─────────────────────────────────────── */
 .hero-text {
     margin-bottom: 1.75rem;
 }
 
-.hero-text .eyebrow {
+.eyebrow {
     display: block;
+    font-family: 'DM Sans', sans-serif;
     font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.85rem;
+    color: #f4c522;
+    margin-bottom: 0.75rem;
 }
 
 .hero-text h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    font-weight: 800;
-    line-height: 1.18;
-    color: var(--white);
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ffffff;
     margin-bottom: 1.1rem;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
 }
 
 .hero-text h1 span {
-    color: var(--gold);
+    color: #f4c522;
 }
 
 .gold-divider {
-    width: 44px;
+    width: 40px;
     height: 3px;
-    background: var(--gold);
+    background: #f4c522;
     border-radius: 2px;
     margin: 0 auto 1.25rem;
 }
 
 .hero-text p {
-    font-size: 14.5px;
-    line-height: 1.75;
-    color: var(--text-dim);
-    max-width: 400px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 380px;
     margin: 0 auto;
 }
 
@@ -150,24 +144,26 @@ body, html {
     gap: 8px;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 2.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2.25rem;
 }
 
-.hero-chips .chip {
+.chip {
     padding: 5px 13px;
     border: 1px solid rgba(244, 197, 34, 0.35);
     border-radius: 20px;
+    font-family: 'DM Sans', sans-serif;
     font-size: 11.5px;
     font-weight: 500;
-    color: var(--text-faint);
-    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.04);
+    letter-spacing: 0.04em;
     transition: border-color 0.2s, color 0.2s;
 }
 
-.hero-chips .chip:hover {
-    border-color: var(--gold);
-    color: var(--gold);
+.chip:hover {
+    border-color: #f4c522;
+    color: #f4c522;
 }
 
 /* ── Buttons ───────────────────────────────────────── */
@@ -184,8 +180,8 @@ body, html {
     width: 100%;
     padding: 14px 24px;
     border-radius: 10px;
-    background: var(--gold);
-    color: var(--maroon-deeper);
+    background: #f4c522;
+    color: #4a1018;
     font-family: 'DM Sans', sans-serif;
     font-size: 15px;
     font-weight: 600;
@@ -193,18 +189,14 @@ body, html {
     text-decoration: none;
     letter-spacing: 0.02em;
     box-shadow: 0 4px 18px rgba(244, 197, 34, 0.35);
-    transition: background 0.2s, transform 0.15s, box-shadow 0.2s, color 0.2s;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
 }
 
 .btn-login:hover {
-    background: var(--gold-dark);
-    color: var(--white);
+    background: #c9a01b;
+    color: #ffffff;
     transform: translateY(-2px);
     box-shadow: 0 8px 26px rgba(244, 197, 34, 0.45);
-}
-
-.btn-login:active {
-    transform: translateY(0);
 }
 
 .btn-register {
@@ -213,7 +205,7 @@ body, html {
     padding: 13px 24px;
     border-radius: 10px;
     background: transparent;
-    color: var(--text-dim);
+    color: rgba(255, 255, 255, 0.8);
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     font-weight: 500;
@@ -225,23 +217,20 @@ body, html {
 
 .btn-register:hover {
     border-color: rgba(255, 255, 255, 0.55);
-    color: var(--white);
+    color: #ffffff;
     background: rgba(255, 255, 255, 0.07);
 }
 
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 480px) {
     .hero-text h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
-    .site-logo {
+    .login-container img.site-logo {
         width: 56px;
         height: 56px;
-    }
-
-    .overlay {
-        align-items: flex-end;
-        padding-bottom: 3rem;
+        max-width: 56px;
+        max-height: 56px;
     }
 }
