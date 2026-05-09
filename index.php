@@ -10,15 +10,28 @@
     <div class="hero-section">
         <div class="overlay">
             <div class="login-container">
+
+                <img src="images/citofficiallogo.png" alt="CIT Logo" class="site-logo">
+
                 <header class="hero-text">
+                    <span class="eyebrow">Room Reservation System</span>
                     <h1>Reserve Your Space <br> At <span>CIT</span></h1>
+                    <div class="gold-divider"></div>
                     <p>Access world-class facilities, modern study pods, and fully-equipped lecture halls for your academic and collaborative needs.</p>
                 </header>
 
+                <div class="hero-chips">
+                    <span class="chip">Lecture Halls</span>
+                    <span class="chip">Study Pods</span>
+                    <span class="chip">Labs</span>
+                    <span class="chip">Conference Rooms</span>
+                </div>
+
                 <div class="button-group">
-                    <a href="login.php" class="btn-login">Login</a>
+                    <a href="login.php" class="btn-login">Sign In</a>
                     <a href="register.php" class="btn-register">Register</a>
                 </div>
+
             </div>
         </div>
     </div>
