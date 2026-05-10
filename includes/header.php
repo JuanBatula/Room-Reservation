@@ -14,6 +14,6 @@
       <a href="dashboard.php">Dashboard</a>
       <a href="bookings.php">Bookings</a>
       <a href="rooms.php">Rooms</a>
-      <a href="admins.php">Admins</a>
+      <a href="../admin/users.php">Users</a>
       <a href="../logout.php">Logout</a>
     </header>
