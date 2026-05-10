@@ -2,7 +2,12 @@
 include '../connect.php';
 include '../includes/header.php';
 
+/*
 $result = mysqli_query($connection, "SELECT * FROM tbuser");
+*/
+
+$result = mysqli_query($connection, "SELECT u.* FROM tbuser u 
+          INNER JOIN tbstudent s ON u.user_id = s.user_id");
 ?>
 
 <h2>Users</h2>
@@ -24,13 +29,8 @@ $result = mysqli_query($connection, "SELECT * FROM tbuser");
         </td>
         <td><?php echo $row['email']; ?></td>
         <td>
-        <a href="edit_user.php?id=<?php echo $row['user_id']; ?>">
-        Edit
-        </a>
-        |
-        <a href="delete_user.php?id=<?php echo $row['user_id']; ?>">
-        Delete
-        </a>
+        <a href="edit_user.php?id=<?php echo $row['user_id']; ?>">Edit</a>|
+        <a href="delete_user.php?id=<?php echo $row['user_id']; ?>">Delete</a>
         </td>
     </tr>
     <?php } ?>
