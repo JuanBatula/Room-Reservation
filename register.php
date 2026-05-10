@@ -7,27 +7,27 @@ include 'connect.php';
 <div>
 	<form method="POST">
 		<pre>
-			First Name:<input type="text" name="fname">
-			Last Name:<input type="text" name="lname">
+			First Name:<input type="text" name="txtfname">
+			Last Name:<input type="text" name="txtlname">
 			Gender:
-			<select name="gender">
+			<select name="txtgender">
 			<option value="">----</option>
 			<option value="Male">Male</option>
 			<option value="Female">Female</option>
 			</select>
 
-			Mobile Number: <input type="text" name="mobile">
-			Program: <input type="text" name="program">
+			Mobile Number: <input type="text" name="txtmobile">
+			Program: <input type="text" name="txtprogram">
 			Year_level:
-			<select name="year_level">
+			<select name="txtyear_level">
 			 <option value="">----</option>
 			 <option value="1">1</option>
 			 <option value="2">2</option>
 			 <option value="3">3</option>
 			 <option value="4">4</option>
 			</select>
-			Email: <input type="text" name="email">
-			Password: <input type="password" name="password">
+			Email: <input type="text" name="txtemail">
+			Password: <input type="password" name="txtpassword">
 		
 			<input type="submit" name="btnRegister" value="Register">
 			Already have an account? <a href="login.php">Login</a>
@@ -37,14 +37,14 @@ include 'connect.php';
 
 <?php
 if(isset($_POST['btnRegister'])){
-    $fname = trim($_POST['fname']);
-    $lname = trim($_POST['lname']);
-    $gender = trim($_POST['gender']);
-    $mobile = trim($_POST['mobile']);
-    $email = trim($_POST['email']);
-    $password_input = trim($_POST['password']);
-    $program = trim($_POST['program']);
-	$year_level = trim($_POST['year_level']);
+    $fname = trim($_POST['txtfname']);
+    $lname = trim($_POST['txtlname']);
+    $gender = trim($_POST['txtgender']);
+    $mobile = trim($_POST['txtmobile']);
+    $email = trim($_POST['txtemail']);
+    $password_input = trim($_POST['txtpassword']);
+    $program = trim($_POST['txtprogram']);
+	$year_level = trim($_POST['txtyear_level']);
 
     if(empty($fname) || empty($lname) || empty($gender) || empty($mobile) || empty($email) || empty($password_input) || empty($program) || empty($year_level)){
         echo "<script>
