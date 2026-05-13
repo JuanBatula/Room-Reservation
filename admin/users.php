@@ -2,14 +2,14 @@
 include '../connect.php';
 include '../includes/header.php';
 
-/*
-$result = mysqli_query($connection, "SELECT * FROM tbuser");
-*/
 
+$result = mysqli_query($connection, "SELECT * FROM tbuser");
+
+/*
 $result = mysqli_query($connection, "SELECT u.* FROM tbuser u 
           INNER JOIN tbstudent s ON u.user_id = s.user_id");
+*/
 ?>
-
 <h2>Users</h2>
 
 <table border="1">

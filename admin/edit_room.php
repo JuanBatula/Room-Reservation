@@ -3,12 +3,10 @@ include '../connect.php';
 include '../includes/header.php';
 
 $id = $_GET['id'];
-
 $data = mysqli_fetch_assoc(mysqli_query($connection, "SELECT * FROM tbroom WHERE room_id=$id"));
 ?>
 
 <h2>Edit Room</h2>
-
 
 <form method="POST">
 <pre>
@@ -36,11 +34,7 @@ if(isset($_POST['btnUpdate'])){
     $capacity = $_POST['capacity'];
     $status = $_POST['status'];
 
-    $sql_update = "UPDATE tbroom SET 
-                   room_name = '".$room_name."', 
-                   capacity = ".$capacity.", 
-                   status = '".$status."' 
-                   WHERE room_id = $id";
+    $sql_update = "UPDATE tbroom SET room_name = '".$room_name."', capacity = ".$capacity.", status = '".$status."' WHERE room_id = $id";
     mysqli_query($connection, $sql_update);
 
     echo "<script language='javascript'>
