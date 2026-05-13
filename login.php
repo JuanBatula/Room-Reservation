@@ -65,7 +65,6 @@ if(isset($_POST['btnLogin'])){
             $user_id = $user['user_id'];
 
             $checkAdmin = mysqli_query($connection,"SELECT * FROM tbadmin WHERE user_id=$user_id");
-
             $checkStudent = mysqli_query($connection,"SELECT * FROM tbstudent WHERE user_id='$user_id'");
 
             if(mysqli_num_rows($checkAdmin) > 0){
