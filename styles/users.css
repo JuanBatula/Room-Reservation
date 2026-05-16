@@ -1,0 +1,238 @@
+/* ═══════════════════════════════════════════════════
+   users.css — CIT Admin User Management Page
+   ═══════════════════════════════════════════════════ */
+
+:root {
+    --maroon:       #8a252c;
+    --maroon-dark:  #6b1a20;
+    --maroon-light: #f5e8e9;
+    --gold:         #f4c522;
+    --gold-dark:    #c9a01b;
+    --text:         #1a1a1a;
+    --text-muted:   #6b6b6b;
+    --border:       #e5e5e5;
+    --white:        #ffffff;
+    --bg:           #f7f4f1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+}
+
+/* ── Top bar ─────────────────────────────────────────── */
+.topbar {
+    background: var(--maroon);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar h1 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--white);
+    margin: 0;
+    letter-spacing: 0.01em;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.topbar-accent {
+    width: 4px;
+    height: 24px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+.gold-bar {
+    height: 3px;
+    background: var(--gold);
+}
+
+/* ── Page wrapper ────────────────────────────────────── */
+.page {
+    padding: 1.5rem;
+}
+
+/* ── Stats row ───────────────────────────────────────── */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.stat {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--maroon);
+    border-radius: 10px;
+    padding: 14px 16px;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-val {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--maroon);
+}
+
+/* ── Table ───────────────────────────────────────────── */
+.table-wrap {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+thead {
+    background: var(--maroon);
+}
+
+thead th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: rgba(255,255,255,0.75);
+    padding: 11px 16px;
+    white-space: nowrap;
+}
+
+thead th:first-child {
+    color: var(--gold);
+}
+
+tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.1s;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background: var(--maroon-light);
+}
+
+td {
+    padding: 13px 16px;
+    vertical-align: middle;
+}
+
+/* ── ID pill ─────────────────────────────────────────── */
+.id-pill {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--maroon-light);
+    color: var(--maroon);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+/* ── User info ───────────────────────────────────────── */
+.user-name {
+    font-weight: 500;
+    color: var(--maroon-dark);
+    margin-bottom: 2px;
+}
+
+.user-email {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* ── Action buttons ──────────────────────────────────── */
+.actions {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-edit {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 12px;
+    border-radius: 7px;
+    border: 1px solid var(--maroon);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    background: transparent;
+    color: var(--maroon);
+    text-decoration: none;
+    transition: background 0.12s, color 0.12s;
+}
+
+.btn-edit:hover {
+    background: var(--maroon);
+    color: var(--white);
+}
+
+.btn-del {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 12px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: border-color 0.12s, color 0.12s, background 0.12s;
+}
+
+.btn-del:hover {
+    border-color: #c0392b;
+    color: #c0392b;
+    background: #fdf0f0;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 768px) {
+    .page {
+        padding: 1rem;
+    }
+
+    table {
+        font-size: 12.5px;
+    }
+
+    td, th {
+        padding: 10px 10px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+}
