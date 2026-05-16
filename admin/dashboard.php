@@ -1,22 +1,30 @@
 <?php
 include '../connect.php';
 require_once '../includes/header.php';
-
-$totalRooms = mysqli_fetch_assoc(mysqli_query($connection,"SELECT COUNT(*) total FROM tbroom"))['total'];
-
-$totalBookings = mysqli_fetch_assoc(mysqli_query($connection, "SELECT COUNT(*) total FROM tbbooking_request"))['total'];
-
-$totalUsers = mysqli_fetch_assoc(mysqli_query($connection, "SELECT COUNT(*) total FROM tbuser"))['total'];
 ?>
 
 <div class="admin-body">
-
     <div class="page-header">
         <div class="page-header-left">
             <div class="page-header-accent"></div>
             <h2>Dashboard</h2>
         </div>
     </div>
+
+    <?php
+    $sql = "SELECT
+    (SELECT COUNT(*) FROM tbroom) AS totalRooms,
+    (SELECT COUNT(*) FROM tbbooking_request) AS totalBookings,
+    (SELECT COUNT(*) FROM tbuser) AS totalUsers ";
+
+    $result = mysqli_query($connection, $sql);
+    $data = mysqli_fetch_assoc($result);
+
+    $totalRooms = $data['totalRooms'];
+    $totalBookings = $data['totalBookings'];
+    $totalUsers = $data['totalUsers'];
+
+    ?>
 
     <div class="dash-stats">
         <div class="dash-stat">
