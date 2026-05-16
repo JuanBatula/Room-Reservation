@@ -98,7 +98,6 @@ header.container a[href*="logout"]:hover {
     border-color: rgba(255,255,255,0.35);
 }
 
-/* Remove old pipe separators — handled by flex gap */
 header.container > hr {
     display: none;
 }
@@ -180,13 +179,8 @@ header.container > hr {
     border-radius: 14px 14px 0 0;
 }
 
-.dash-stat.gold::before {
-    background: var(--gold);
-}
-
-.dash-stat.green::before {
-    background: #4caf50;
-}
+.dash-stat.gold::before { background: var(--gold); }
+.dash-stat.green::before { background: #4caf50; }
 
 .stat-icon {
     font-size: 22px;
@@ -209,13 +203,8 @@ header.container > hr {
     line-height: 1;
 }
 
-.dash-stat.gold .stat-value {
-    color: var(--gold-dark);
-}
-
-.dash-stat.green .stat-value {
-    color: #388e3c;
-}
+.dash-stat.gold .stat-value { color: var(--gold-dark); }
+.dash-stat.green .stat-value { color: #388e3c; }
 
 /* ═══════════════════════════════════════════════
    TABLE SHARED
@@ -263,22 +252,15 @@ thead th {
     white-space: nowrap;
 }
 
-thead th:first-child {
-    color: var(--gold);
-}
+thead th:first-child { color: var(--gold); }
 
 tbody tr {
     border-bottom: 1px solid #f2f2f2;
     transition: background 0.1s;
 }
 
-tbody tr:last-child {
-    border-bottom: none;
-}
-
-tbody tr:hover {
-    background: var(--maroon-light);
-}
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--maroon-light); }
 
 td {
     padding: 13px 16px;
@@ -306,22 +288,11 @@ td {
     flex-shrink: 0;
 }
 
-.badge-pending {
-    background: var(--status-pending-bg);
-    color: var(--status-pending-txt);
-}
+.badge-pending  { background: var(--status-pending-bg);  color: var(--status-pending-txt); }
 .badge-pending::before  { background: var(--status-pending-txt); }
-
-.badge-approved {
-    background: var(--status-approved-bg);
-    color: var(--status-approved-txt);
-}
+.badge-approved { background: var(--status-approved-bg); color: var(--status-approved-txt); }
 .badge-approved::before { background: var(--status-approved-txt); }
-
-.badge-rejected {
-    background: var(--status-rejected-bg);
-    color: var(--status-rejected-txt);
-}
+.badge-rejected { background: var(--status-rejected-bg); color: var(--status-rejected-txt); }
 .badge-rejected::before { background: var(--status-rejected-txt); }
 
 /* ── Action links ────────────────────────────────── */
@@ -373,7 +344,6 @@ td {
     font-style: italic;
 }
 
-/* ── User/room meta ──────────────────────────────── */
 .meta-primary {
     font-weight: 500;
     color: var(--text);
@@ -385,7 +355,6 @@ td {
     margin-top: 2px;
 }
 
-/* ── ID badge ────────────────────────────────────── */
 .id-pill {
     display: inline-block;
     padding: 2px 8px;
@@ -397,18 +366,14 @@ td {
     letter-spacing: 0.04em;
 }
 
-/* ── Empty state ─────────────────────────────────── */
 .empty-state {
     padding: 3rem;
     text-align: center;
     color: var(--text-muted);
 }
 
-.empty-state p {
-    font-size: 14px;
-}
+.empty-state p { font-size: 14px; }
 
-/* ── Utility ─────────────────────────────────────── */
 .mt-1 { margin-top: 0.5rem; }
 .mt-2 { margin-top: 1rem; }
 
@@ -426,22 +391,135 @@ td {
 }
 
 /* ═══════════════════════════════════════════════
+   ROOMS PAGE — TAB GROUP
+   ═══════════════════════════════════════════════ */
+.tab-row {
+    display: inline-flex;
+    gap: 4px;
+    margin-bottom: 1.25rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.tab-row .tab-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 20px;
+    border-radius: 7px;
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    line-height: 1;
+    margin: 0;
+    outline: none;
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.tab-row .tab-btn:hover {
+    background: var(--maroon-light);
+    color: var(--maroon);
+    border: none;
+    box-shadow: none;
+}
+
+.tab-row .tab-btn.active {
+    background: var(--maroon);
+    color: var(--white);
+    border: none;
+    box-shadow: 0 2px 8px rgba(138,37,44,0.22);
+}
+
+/* ═══════════════════════════════════════════════
+   ROOMS PAGE — PAGINATION
+   ═══════════════════════════════════════════════ */
+.pg-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    margin-top: 1rem;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.pg-info {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.pg-btns {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    width: 284px;
+    flex-shrink: 0;
+    justify-content: flex-end;
+}
+
+.pg-btn {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--text);
+    flex-shrink: 0;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    line-height: 1;
+    transition: background 0.12s, color 0.12s, border-color 0.12s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.pg-btn.ghost {
+    visibility: hidden;
+    pointer-events: none;
+    border-color: transparent;
+    background: transparent;
+}
+
+.pg-btn:hover:not(:disabled):not(.ghost) {
+    background: var(--maroon-light);
+    border-color: var(--maroon);
+    color: var(--maroon);
+}
+
+.pg-btn.active {
+    background: var(--maroon);
+    color: var(--white);
+    border-color: var(--maroon);
+}
+
+.pg-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* ═══════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════ */
 @media (max-width: 768px) {
-    .admin-body {
-        padding: 1rem;
-    }
-
-    .dash-stats {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    table {
-        font-size: 12.5px;
-    }
-
-    td, th {
-        padding: 10px 10px;
-    }
+    .admin-body { padding: 1rem; }
+    .dash-stats { grid-template-columns: 1fr 1fr; }
+    table { font-size: 12.5px; }
+    td, th { padding: 10px 10px; }
+    .tab-row { flex-wrap: wrap; }
 }

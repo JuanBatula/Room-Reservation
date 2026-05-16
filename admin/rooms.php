@@ -10,7 +10,7 @@ $totalUnavail  = mysqli_fetch_assoc(mysqli_query($connection, "SELECT COUNT(*) c
 $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC");
 ?>
 
-<link rel="stylesheet" href="../styles/rooms.css">
+<link rel="stylesheet" href="/ROOM-RESERVATION/styles/rooms.css">
 
 <div class="topbar">
     <div class="topbar-left">
@@ -96,10 +96,13 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
 
 </div>
 
+
+<?php include '../includes/footer.php'; ?>
+
 <script>
 (function () {
     const ROWS_PER_PAGE = 5;
-    const MAX_PAGE_SLOTS = 6; // ghost slots reserved for page-number buttons
+    const MAX_PAGE_SLOTS = 6;
 
     const tbody   = document.querySelector('#roomsTable tbody');
     const allRows = Array.from(tbody.querySelectorAll('tr'));
@@ -149,21 +152,17 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
 
         btns.innerHTML = '';
 
-        // ‹ prev
         btns.appendChild(makeBtn('‹', () => render(current - 1), '', current === 1));
 
-        // Page-number buttons + ghost placeholders to fill MAX_PAGE_SLOTS
         for (let slot = 0; slot < MAX_PAGE_SLOTS; slot++) {
             const p = slot + 1;
             if (p <= total) {
                 btns.appendChild(makeBtn(p, () => render(p), p === current ? 'active' : '', false));
             } else {
-                // invisible placeholder — keeps prev/next pinned
                 btns.appendChild(makeBtn('', null, 'ghost', true));
             }
         }
 
-        // › next
         btns.appendChild(makeBtn('›', () => render(current + 1), '', current === total));
     }
 
@@ -179,5 +178,3 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
     render(1);
 })();
 </script>
-
-<?php include '../includes/footer.php'; ?>
