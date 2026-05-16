@@ -89,7 +89,6 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
         </table>
     </div>
 
-    <!-- Fixed-height pagination area so buttons never shift position -->
     <div class="pg-row">
         <span class="pg-info" id="pgInfoRooms"></span>
         <div class="pg-btns" id="pgBtnsRooms"></div>
@@ -100,15 +99,16 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
 <script>
 (function () {
     const ROWS_PER_PAGE = 5;
+    const MAX_PAGE_SLOTS = 6; // ghost slots reserved for page-number buttons
+
     const tbody   = document.querySelector('#roomsTable tbody');
     const allRows = Array.from(tbody.querySelectorAll('tr'));
     const info    = document.getElementById('pgInfoRooms');
     const btns    = document.getElementById('pgBtnsRooms');
     const tabs    = document.querySelectorAll('.tab-btn');
 
-    let current    = 1;
+    let current      = 1;
     let activeFilter = '';
-    let visibleRows  = allRows;
 
     function getFiltered() {
         return activeFilter
@@ -120,60 +120,53 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
         return Math.max(1, Math.ceil(rows.length / ROWS_PER_PAGE));
     }
 
-    function render(page) {
-        current     = page;
-        visibleRows = getFiltered();
+    function makeBtn(label, onClick, extraClass, disabled) {
+        const btn = document.createElement('button');
+        btn.className = 'pg-btn' + (extraClass ? ' ' + extraClass : '');
+        btn.textContent = label;
+        if (disabled) btn.disabled = true;
+        if (onClick)  btn.onclick  = onClick;
+        return btn;
+    }
 
+    function render(page) {
+        const visibleRows = getFiltered();
         const total = totalPages(visibleRows);
-        // clamp in case filter shrinks the page count
-        if (current > total) current = total;
+
+        current = Math.min(Math.max(page, 1), total);
 
         const start = (current - 1) * ROWS_PER_PAGE;
         const end   = start + ROWS_PER_PAGE;
 
-        // hide all, then show only the current page of filtered rows
         allRows.forEach(r => r.style.display = 'none');
         visibleRows.forEach((r, i) => {
             r.style.display = (i >= start && i < end) ? '' : 'none';
         });
 
-        // info text
         info.textContent = visibleRows.length
             ? `Showing ${start + 1}–${Math.min(end, visibleRows.length)} of ${visibleRows.length} room${visibleRows.length !== 1 ? 's' : ''}`
             : 'No rooms found';
 
-        // ── pagination buttons ──────────────────────────────
-        // We always render MAX_BTNS slots so the row height never changes.
-        // Slots that aren't needed get invisible placeholder buttons.
-        const MAX_BTNS = 2 + 5; // prev + up to 5 page numbers + next = 7 slots max
-        // Actually let's just build prev + pages + next and use min-width on the container.
-
         btns.innerHTML = '';
 
-        const prev = document.createElement('button');
-        prev.className = 'pg-btn';
-        prev.textContent = '‹';
-        prev.disabled = current === 1;
-        prev.onclick = () => render(current - 1);
-        btns.appendChild(prev);
+        // ‹ prev
+        btns.appendChild(makeBtn('‹', () => render(current - 1), '', current === 1));
 
-        for (let p = 1; p <= total; p++) {
-            const btn = document.createElement('button');
-            btn.className = 'pg-btn' + (p === current ? ' active' : '');
-            btn.textContent = p;
-            btn.onclick = () => render(p);
-            btns.appendChild(btn);
+        // Page-number buttons + ghost placeholders to fill MAX_PAGE_SLOTS
+        for (let slot = 0; slot < MAX_PAGE_SLOTS; slot++) {
+            const p = slot + 1;
+            if (p <= total) {
+                btns.appendChild(makeBtn(p, () => render(p), p === current ? 'active' : '', false));
+            } else {
+                // invisible placeholder — keeps prev/next pinned
+                btns.appendChild(makeBtn('', null, 'ghost', true));
+            }
         }
 
-        const next = document.createElement('button');
-        next.className = 'pg-btn';
-        next.textContent = '›';
-        next.disabled = current === total;
-        next.onclick = () => render(current + 1);
-        btns.appendChild(next);
+        // › next
+        btns.appendChild(makeBtn('›', () => render(current + 1), '', current === total));
     }
 
-    // Tab switching
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             tabs.forEach(t => t.classList.remove('active'));

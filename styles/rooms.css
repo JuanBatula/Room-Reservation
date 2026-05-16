@@ -59,7 +59,7 @@ body {
     background: var(--gold);
 }
 
-/* ── Buttons ─────────────────────────────────────────── */
+/* ── Add button ──────────────────────────────────────── */
 .btn-add {
     display: inline-flex;
     align-items: center;
@@ -128,36 +128,51 @@ body {
     color: #888;
 }
 
-/* ── Filter tabs ─────────────────────────────────────── */
+/* ── Filter tab group ────────────────────────────────── */
 .tab-row {
-    display: flex;
-    gap: 6px;
+    display: inline-flex;
+    gap: 4px;
     margin-bottom: 1.25rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 
-.tab-btn {
-    padding: 7px 18px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: var(--white);
+/* Use high specificity + !important where Bootstrap fights us */
+.tab-row .tab-btn {
+    all: unset;                     /* strip every browser/Bootstrap default */
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 20px;
+    border-radius: 7px;
+    border: none !important;
+    background: transparent !important;
     font-size: 13px;
     font-weight: 500;
     color: var(--text-muted);
     cursor: pointer;
     font-family: inherit;
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
-.tab-btn:hover {
-    background: var(--maroon-light);
-    border-color: var(--maroon-light);
-    color: var(--maroon);
+.tab-row .tab-btn:hover:not(.active) {
+    background: var(--maroon-light) !important;
+    color: var(--maroon) !important;
 }
 
-.tab-btn.active {
-    background: var(--maroon);
-    border-color: var(--maroon);
-    color: var(--white);
+.tab-row .tab-btn.active {
+    background: var(--maroon) !important;
+    color: var(--white) !important;
+    box-shadow: 0 2px 8px rgba(138,37,44,0.22);
 }
 
 /* ── Table ───────────────────────────────────────────── */
@@ -224,7 +239,7 @@ td {
     font-size: 13px;
 }
 
-/* ── Badges ──────────────────────────────────────────── */
+/* ── Status badges ───────────────────────────────────── */
 .badge {
     display: inline-block;
     font-size: 12px;
@@ -304,7 +319,6 @@ td {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* Fixed height so the next/prev buttons never move between pages */
     height: 40px;
     margin-top: 1rem;
     font-size: 13px;
@@ -316,44 +330,56 @@ td {
     color: var(--text-muted);
 }
 
+/*
+  MAX_SLOTS = prev + 6 page-number slots + next = 8 buttons
+  Each: 32px + 4px gap → (8×32) + (7×4) = 284px fixed width
+*/
 .pg-btns {
     display: flex;
     gap: 4px;
     align-items: center;
-    /* Reserve enough width for the widest possible button set so
-       prev/next don't drift left as page-number buttons appear/disappear.
-       Assumes at most ~8 page buttons (prev + 6 pages + next). Adjust if needed. */
-    min-width: 260px;
+    width: 284px;
+    flex-shrink: 0;
     justify-content: flex-end;
 }
 
 .pg-btn {
-    /* Fixed size so buttons never resize or shift neighbours */
+    all: unset;
+    box-sizing: border-box;
     width: 32px;
     height: 32px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 7px;
-    border: 1px solid var(--border);
-    background: transparent;
+    border: 1px solid var(--border) !important;
+    background: transparent !important;
     font-size: 13px;
     cursor: pointer;
     color: var(--text);
     flex-shrink: 0;
     transition: background 0.12s, color 0.12s, border-color 0.12s;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
-.pg-btn:hover:not(:disabled) {
-    background: var(--maroon-light);
-    border-color: var(--maroon);
-    color: var(--maroon);
+.pg-btn.ghost {
+    visibility: hidden;
+    pointer-events: none;
+    border-color: transparent !important;
+    background: transparent !important;
+}
+
+.pg-btn:hover:not(:disabled):not(.ghost) {
+    background: var(--maroon-light) !important;
+    border-color: var(--maroon) !important;
+    color: var(--maroon) !important;
 }
 
 .pg-btn.active {
-    background: var(--maroon);
-    color: var(--white);
-    border-color: var(--maroon);
+    background: var(--maroon) !important;
+    color: var(--white) !important;
+    border-color: var(--maroon) !important;
 }
 
 .pg-btn:disabled {
