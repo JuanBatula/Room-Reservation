@@ -26,7 +26,6 @@ $result = mysqli_query($connection, "SELECT u.* FROM tbuser u
         <table id="usersTable">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Actions</th>
@@ -35,7 +34,6 @@ $result = mysqli_query($connection, "SELECT u.* FROM tbuser u
             <tbody>
                 <?php while($row = mysqli_fetch_assoc($result)){ ?>
                 <tr>
-                    <td><span class="id-pill">#<?php echo $row['user_id']; ?></span></td>
                     <td>
                         <div class="user-name"><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['last_name']); ?></div>
                     </td>
