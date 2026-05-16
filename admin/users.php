@@ -14,14 +14,12 @@ $result = mysqli_query($connection, "SELECT u.* FROM tbuser u
 
 <table border="1">
     <tr>
-        <th>ID</th>
         <th>Name</th>
         <th>Email</th>
         <th>Action</th>
     </tr>
     <?php while($row=mysqli_fetch_assoc($result)){ ?>
     <tr>
-        <td><?php echo $row['user_id']; ?></td>
         <td>
         <?php
         echo $row['first_name']." ".$row['last_name'];

@@ -83,7 +83,6 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom $where ORDER BY room_i
                 <tr>
                     <td>
                         <div class="room-name"><?php echo htmlspecialchars($row['room_name']); ?></div>
-                        <div class="room-id">#<?php echo $row['room_id']; ?></div>
                     </td>
                     <td>
                         <div class="cap"><?php echo $row['capacity']; ?> pax</div>
