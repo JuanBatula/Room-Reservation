@@ -128,49 +128,36 @@ body {
     color: #888;
 }
 
-/* ── Search row ──────────────────────────────────────── */
-.search-row {
+/* ── Filter tabs ─────────────────────────────────────── */
+.tab-row {
     display: flex;
-    gap: 10px;
+    gap: 6px;
     margin-bottom: 1.25rem;
 }
 
-.search-wrap {
-    position: relative;
-    flex: 1;
-}
-
-.search-wrap input {
-    width: 100%;
-    padding: 9px 12px;
-    border: 1px solid var(--border);
+.tab-btn {
+    padding: 7px 18px;
     border-radius: 8px;
-    font-size: 14px;
-    color: var(--text);
-    background: var(--white);
-    font-family: inherit;
-}
-
-.search-wrap input:focus {
-    outline: none;
-    border-color: var(--maroon);
-    box-shadow: 0 0 0 3px rgba(138, 37, 44, 0.08);
-}
-
-.filter-select {
-    padding: 9px 12px;
     border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 14px;
-    color: var(--text);
     background: var(--white);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
     cursor: pointer;
     font-family: inherit;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
-.filter-select:focus {
-    outline: none;
+.tab-btn:hover {
+    background: var(--maroon-light);
+    border-color: var(--maroon-light);
+    color: var(--maroon);
+}
+
+.tab-btn.active {
+    background: var(--maroon);
     border-color: var(--maroon);
+    color: var(--white);
 }
 
 /* ── Table ───────────────────────────────────────────── */
@@ -317,6 +304,8 @@ td {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    /* Fixed height so the next/prev buttons never move between pages */
+    height: 40px;
     margin-top: 1rem;
     font-size: 13px;
     color: var(--text-muted);
@@ -330,16 +319,28 @@ td {
 .pg-btns {
     display: flex;
     gap: 4px;
+    align-items: center;
+    /* Reserve enough width for the widest possible button set so
+       prev/next don't drift left as page-number buttons appear/disappear.
+       Assumes at most ~8 page buttons (prev + 6 pages + next). Adjust if needed. */
+    min-width: 260px;
+    justify-content: flex-end;
 }
 
 .pg-btn {
-    padding: 5px 11px;
+    /* Fixed size so buttons never resize or shift neighbours */
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 7px;
     border: 1px solid var(--border);
     background: transparent;
     font-size: 13px;
     cursor: pointer;
     color: var(--text);
+    flex-shrink: 0;
     transition: background 0.12s, color 0.12s, border-color 0.12s;
 }
 
@@ -374,7 +375,7 @@ td {
         padding: 10px 10px;
     }
 
-    .search-row {
-        flex-direction: column;
+    .tab-row {
+        flex-wrap: wrap;
     }
 }
