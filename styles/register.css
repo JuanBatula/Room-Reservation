@@ -1,0 +1,306 @@
+/* ═══════════════════════════════════════════════════
+   register.css — CIT Room Reservation Register Page
+   ═══════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+    --maroon:        #8a252c;
+    --maroon-dark:   #6b1a20;
+    --maroon-deeper: #4a1018;
+    --maroon-light:  #f5e8e9;
+    --gold:          #f4c522;
+    --gold-dark:     #c9a01b;
+    --white:         #ffffff;
+    --off-white:     #fdf8f2;
+    --text:          #1a1a1a;
+    --text-muted:    #888;
+    --border:        #ddd;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+}
+
+/* ── Page layout — two columns ─────────────────────── */
+.register-page {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    min-height: 100vh;
+}
+
+/* ── Left hero panel ───────────────────────────────── */
+.register-hero {
+    position: relative;
+    background: linear-gradient(145deg, var(--maroon-deeper) 0%, var(--maroon) 60%, #b03040 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem;
+    overflow: hidden;
+}
+
+.register-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('images/GLE-Building.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.18;
+    mix-blend-mode: luminosity;
+}
+
+.register-hero::after {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 360px;
+    height: 360px;
+    border: 60px solid rgba(244, 197, 34, 0.08);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-deco {
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 280px;
+    height: 280px;
+    border: 40px solid rgba(244, 197, 34, 0.06);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-logo {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+}
+
+.hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+}
+
+.hero-title span {
+    color: var(--gold);
+}
+
+.hero-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.65);
+    max-width: 300px;
+    margin-bottom: 2rem;
+}
+
+.hero-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.chip {
+    padding: 5px 12px;
+    border: 1px solid rgba(244, 197, 34, 0.35);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.04em;
+}
+
+/* ── Right form panel ──────────────────────────────── */
+.register-form-panel {
+    background: var(--off-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2.5rem;
+    overflow-y: auto;
+}
+
+.register-box {
+    width: 100%;
+    max-width: 480px;
+}
+
+.gold-line {
+    width: 40px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin-bottom: 1.75rem;
+}
+
+.register-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--maroon-dark);
+    margin-bottom: 0.4rem;
+}
+
+.register-box .subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+/* ── Two-column field grid ─────────────────────────── */
+.field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.field-grid .field-group.full {
+    grid-column: 1 / -1;
+}
+
+/* ── Field group ───────────────────────────────────── */
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 0;
+}
+
+.field-group label {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #555;
+}
+
+.field-group input,
+.field-group select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.field-group input:focus,
+.field-group select:focus {
+    outline: none;
+    border-color: var(--maroon);
+    box-shadow: 0 0 0 3px rgba(138, 37, 44, 0.1);
+}
+
+.field-group input::placeholder {
+    color: #bbb;
+}
+
+/* ── Submit button ─────────────────────────────────── */
+.btn-register-submit {
+    width: 100%;
+    padding: 13px;
+    margin-top: 1.5rem;
+    border: none;
+    border-radius: 10px;
+    background: var(--maroon);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(138, 37, 44, 0.25);
+}
+
+.btn-register-submit:hover {
+    background: var(--maroon-dark);
+    box-shadow: 0 6px 20px rgba(138, 37, 44, 0.35);
+    transform: translateY(-1px);
+}
+
+.btn-register-submit:active {
+    transform: translateY(0);
+}
+
+/* ── Footer link ───────────────────────────────────── */
+.register-footer {
+    margin-top: 1.5rem;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.register-footer a {
+    color: var(--maroon);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.register-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 900px) {
+    .register-page {
+        grid-template-columns: 1fr;
+    }
+
+    .register-hero {
+        min-height: 220px;
+        justify-content: flex-end;
+        padding: 2rem;
+    }
+
+    .hero-title {
+        font-size: 1.9rem;
+    }
+
+    .register-form-panel {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .field-grid {
+        grid-template-columns: 1fr;
+    }
+}
