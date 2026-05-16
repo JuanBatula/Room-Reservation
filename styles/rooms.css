@@ -1,3 +1,7 @@
+/* ═══════════════════════════════════════════════════
+   rooms.css — CIT Admin Room Management Page
+   ═══════════════════════════════════════════════════ */
+
 :root {
     --maroon:       #8a252c;
     --maroon-dark:  #6b1a20;
@@ -9,10 +13,15 @@
     --text-muted:   #6b6b6b;
     --border:       #e5e5e5;
     --white:        #ffffff;
+    --bg:           #f7f4f1;
 }
 
 * {
     box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
 }
 
 /* ── Top bar ─────────────────────────────────────────── */
@@ -131,29 +140,21 @@
     flex: 1;
 }
 
-.search-wrap i {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: var(--text-muted);
-    pointer-events: none;
-}
-
 .search-wrap input {
     width: 100%;
-    padding: 9px 12px 9px 34px;
+    padding: 9px 12px;
     border: 1px solid var(--border);
     border-radius: 8px;
     font-size: 14px;
     color: var(--text);
     background: var(--white);
+    font-family: inherit;
 }
 
 .search-wrap input:focus {
     outline: none;
     border-color: var(--maroon);
+    box-shadow: 0 0 0 3px rgba(138, 37, 44, 0.08);
 }
 
 .filter-select {
@@ -164,6 +165,7 @@
     color: var(--text);
     background: var(--white);
     cursor: pointer;
+    font-family: inherit;
 }
 
 .filter-select:focus {
@@ -177,6 +179,7 @@
     border-radius: 12px;
     overflow: hidden;
     background: var(--white);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
 }
 
 table {
@@ -195,7 +198,7 @@ thead th {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255,255,255,0.75);
     padding: 11px 14px;
 }
 
@@ -224,12 +227,6 @@ td {
 .room-name {
     font-weight: 500;
     color: var(--maroon-dark);
-}
-
-.room-id {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 2px;
 }
 
 .cap {
@@ -325,23 +322,59 @@ td {
     color: var(--text-muted);
 }
 
+.pg-info {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
 .pg-btns {
     display: flex;
     gap: 4px;
 }
 
 .pg-btn {
-    padding: 5px 10px;
+    padding: 5px 11px;
     border-radius: 7px;
     border: 1px solid var(--border);
     background: transparent;
     font-size: 13px;
     cursor: pointer;
     color: var(--text);
+    transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+
+.pg-btn:hover:not(:disabled) {
+    background: var(--maroon-light);
+    border-color: var(--maroon);
+    color: var(--maroon);
 }
 
 .pg-btn.active {
     background: var(--maroon);
     color: var(--white);
     border-color: var(--maroon);
+}
+
+.pg-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 768px) {
+    .page {
+        padding: 1rem;
+    }
+
+    table {
+        font-size: 12.5px;
+    }
+
+    td, th {
+        padding: 10px 10px;
+    }
+
+    .search-row {
+        flex-direction: column;
+    }
 }

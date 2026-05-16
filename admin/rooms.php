@@ -64,7 +64,7 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom $where ORDER BY room_i
     </form>
 
     <div class="table-wrap">
-        <table>
+        <table id="roomsTable">
             <thead>
                 <tr>
                     <th>Room</th>
@@ -103,6 +103,65 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom $where ORDER BY room_i
         </table>
     </div>
 
+    <div class="pg-row">
+        <span class="pg-info" id="pgInfoRooms"></span>
+        <div class="pg-btns" id="pgBtnsRooms"></div>
+    </div>
+
 </div>
+
+<script>
+(function () {
+    const ROWS_PER_PAGE = 8;
+    const tbody = document.querySelector('#roomsTable tbody');
+    const rows  = Array.from(tbody.querySelectorAll('tr'));
+    const info  = document.getElementById('pgInfoRooms');
+    const btns  = document.getElementById('pgBtnsRooms');
+    let current = 1;
+
+    function totalPages() {
+        return Math.max(1, Math.ceil(rows.length / ROWS_PER_PAGE));
+    }
+
+    function render(page) {
+        current = page;
+        const start = (page - 1) * ROWS_PER_PAGE;
+        const end   = start + ROWS_PER_PAGE;
+
+        rows.forEach((row, i) => {
+            row.style.display = (i >= start && i < end) ? '' : 'none';
+        });
+
+        const total = totalPages();
+        info.textContent = `Showing ${Math.min(start + 1, rows.length)}–${Math.min(end, rows.length)} of ${rows.length} rooms`;
+
+        btns.innerHTML = '';
+
+        const prev = document.createElement('button');
+        prev.className = 'pg-btn';
+        prev.textContent = '‹';
+        prev.disabled = page === 1;
+        prev.onclick = () => render(current - 1);
+        btns.appendChild(prev);
+
+        for (let p = 1; p <= total; p++) {
+            const btn = document.createElement('button');
+            btn.className = 'pg-btn' + (p === page ? ' active' : '');
+            btn.textContent = p;
+            btn.onclick = () => render(p);
+            btns.appendChild(btn);
+        }
+
+        const next = document.createElement('button');
+        next.className = 'pg-btn';
+        next.textContent = '›';
+        next.disabled = page === total;
+        next.onclick = () => render(current + 1);
+        btns.appendChild(next);
+    }
+
+    render(1);
+})();
+</script>
 
 <?php include '../includes/footer.php'; ?>

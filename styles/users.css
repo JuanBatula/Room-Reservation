@@ -218,6 +218,54 @@ td {
     background: #fdf0f0;
 }
 
+/* ── Pagination ──────────────────────────────────────── */
+.pg-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.pg-info {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.pg-btns {
+    display: flex;
+    gap: 4px;
+}
+
+.pg-btn {
+    padding: 5px 11px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--text);
+    transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+
+.pg-btn:hover:not(:disabled) {
+    background: var(--maroon-light);
+    border-color: var(--maroon);
+    color: var(--maroon);
+}
+
+.pg-btn.active {
+    background: var(--maroon);
+    color: var(--white);
+    border-color: var(--maroon);
+}
+
+.pg-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
 /* ── Responsive ──────────────────────────────────────── */
 @media (max-width: 768px) {
     .page {
