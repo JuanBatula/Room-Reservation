@@ -102,7 +102,7 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
 <script>
 (function () {
     const ROWS_PER_PAGE = 5;
-    const MAX_PAGE_SLOTS = 6;
+    const MAX_PAGE_SLOTS = 10;
 
     const tbody   = document.querySelector('#roomsTable tbody');
     const allRows = Array.from(tbody.querySelectorAll('tr'));
@@ -113,10 +113,15 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
     let current      = 1;
     let activeFilter = '';
 
+    // If naay filter gi select (ex. "Available")
+    // i return ang only rows whose data-status kay mo match sa filter
+    // if walay filter gi select kay: i return tanan rows
     function getFiltered() {
-        return activeFilter
-            ? allRows.filter(r => r.dataset.status === activeFilter)
-            : allRows;
+        if (activeFilter) {
+            return allRows.filter(r => r.dataset.status === activeFilter);
+        } else {
+            return allRows;
+        }
     }
 
     function totalPages(rows) {
@@ -125,10 +130,18 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
 
     function makeBtn(label, onClick, extraClass, disabled) {
         const btn = document.createElement('button');
-        btn.className = 'pg-btn' + (extraClass ? ' ' + extraClass : '');
+        let className = 'pg-btn';
+        if (extraClass) {
+            className += ' ' + extraClass;
+        }
+        btn.className = className;
         btn.textContent = label;
-        if (disabled) btn.disabled = true;
-        if (onClick)  btn.onclick  = onClick;
+        if (disabled) {
+            btn.disabled = true;
+        }
+        if (onClick) {
+            btn.onclick = onClick;
+        }
         return btn;
     }
 
