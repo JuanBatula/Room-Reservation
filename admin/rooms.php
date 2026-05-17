@@ -156,12 +156,22 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
 
         allRows.forEach(r => r.style.display = 'none');
         visibleRows.forEach((r, i) => {
-            r.style.display = (i >= start && i < end) ? '' : 'none';
+            if (i >= start && i < end) {
+                r.style.display = '';   // show
+            } else {
+                r.style.display = 'none'; // hide
+            }
         });
 
         info.textContent = visibleRows.length
-            ? `Showing ${start + 1}–${Math.min(end, visibleRows.length)} of ${visibleRows.length} room${visibleRows.length !== 1 ? 's' : ''}`
-            : 'No rooms found';
+        if (visibleRows.length > 0) {
+            let first = start + 1;
+            let last  = Math.min(end, visibleRows.length);
+            let word  = visibleRows.length === 1 ? 'room' : 'rooms';
+            info.textContent = `Showing ${first}–${last} of ${visibleRows.length} ${word}`;
+        } else {
+            info.textContent = 'No rooms found';
+        }
 
         btns.innerHTML = '';
 
