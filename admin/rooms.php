@@ -112,23 +112,23 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
     let current      = 1;
     let activeFilter = '';
 
-    // If naay filter gi select (ex. "Available")
+    // If naay filter gi select (ex. "Available") -------------------------------------------------
     // i return ang only rows whose data-status kay mo match sa filter
     // if walay filter gi select kay: i return tanan rows
     function getFiltered() {
         if (activeFilter) {
-            return allRows.filter(r => r.dataset.status === activeFilter);
+            return allRows.filter(r => r.dataset.status === activeFilter); //reads from data status
         } else {
             return allRows;
         }
     }
 
-    // so rows = 10, divided by ROWS PER PAGE(5)
+    // so rows = 10, divided by ROWS PER PAGE(5) ----------------------
     function totalPages(rows) {
         return Math.max(1, Math.ceil(rows.length / ROWS_PER_PAGE));
     }
 
-    //shortcut ni for making the pagination buttons
+    //shortcut ni for making the pagination buttons -----------------------------
     function makeBtn(label, onClick, extraClass, disabled) {
         const btn = document.createElement('button');
         let className = 'pg-btn';
@@ -194,7 +194,7 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
         tab.addEventListener('click', () => {
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            activeFilter = tab.dataset.filter;
+            activeFilter = tab.dataset.filter; // reads the value of data-filter
             render(1);
         });
     });
