@@ -63,7 +63,7 @@ $result = mysqli_query($connection, "SELECT u.* FROM tbuser u
 
 <script>
 (function () {
-    const ROWS_PER_PAGE = 8;
+    const ROWS_PER_PAGE = 6;
     const tbody = document.querySelector('#usersTable tbody');
     const rows  = Array.from(tbody.querySelectorAll('tr'));
     const info  = document.getElementById('pgInfoUsers');
@@ -79,30 +79,40 @@ $result = mysqli_query($connection, "SELECT u.* FROM tbuser u
         const start = (page - 1) * ROWS_PER_PAGE;
         const end   = start + ROWS_PER_PAGE;
 
+        //displays the users sa current page ----------------
         rows.forEach((row, i) => {
-            row.style.display = (i >= start && i < end) ? '' : 'none';
+            if (i >= start && i < end) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
         });
 
+        //info pila ka rooms out of ----------------------
         const total = totalPages();
         info.textContent = `Showing ${Math.min(start + 1, rows.length)}–${Math.min(end, rows.length)} of ${rows.length} users`;
 
+        //pagination buttons ------------------------
+        // prev button
         btns.innerHTML = '';
-
         const prev = document.createElement('button');
         prev.className = 'pg-btn';
         prev.textContent = '‹';
         prev.disabled = page === 1;
         prev.onclick = () => render(current - 1);
         btns.appendChild(prev);
-
+        //number buttons
         for (let p = 1; p <= total; p++) {
             const btn = document.createElement('button');
-            btn.className = 'pg-btn' + (p === page ? ' active' : '');
+            btn.className = 'pg-btn';
+            if (p === page) {
+                btn.className += ' active';
+            }
             btn.textContent = p;
             btn.onclick = () => render(p);
             btns.appendChild(btn);
         }
-
+        //next button
         const next = document.createElement('button');
         next.className = 'pg-btn';
         next.textContent = '›';
@@ -111,6 +121,7 @@ $result = mysqli_query($connection, "SELECT u.* FROM tbuser u
         btns.appendChild(next);
     }
 
+    //pag load sa page
     render(1);
 })();
 </script>

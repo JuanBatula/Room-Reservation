@@ -80,7 +80,7 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
                         <div class="actions">
                             <a href="edit_room.php?id=<?php echo $row['room_id']; ?>" class="btn-edit">Edit</a>
                             <a href="delete_room.php?id=<?php echo $row['room_id']; ?>" class="btn-del"
-                               onclick="return confirm('Delete this room?')">Delete</a>
+                            onclick="return confirm('Delete \'<?php echo addslashes(htmlspecialchars($row['room_name'])); ?>\'?\nThis action cannot be undone.')">Delete</a>
                         </div>
                     </td>
                 </tr>
@@ -102,7 +102,6 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
 <script>
 (function () {
     const ROWS_PER_PAGE = 5;
-    const MAX_PAGE_SLOTS = 10;
 
     const tbody   = document.querySelector('#roomsTable tbody');
     const allRows = Array.from(tbody.querySelectorAll('tr'));
@@ -173,19 +172,12 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
             info.textContent = 'No rooms found';
         }
 
+        // pagination buttons ni
         btns.innerHTML = '';
-
         btns.appendChild(makeBtn('‹', () => render(current - 1), '', current === 1));
-
-        for (let slot = 0; slot < MAX_PAGE_SLOTS; slot++) {
-            const p = slot + 1;
-            if (p <= total) {
-                btns.appendChild(makeBtn(p, () => render(p), p === current ? 'active' : '', false));
-            } else {
-                btns.appendChild(makeBtn('', null, 'ghost', true));
-            }
+        for (let p = 1; p <= total; p++) {
+            btns.appendChild(makeBtn(p, () => render(p), p === current ? 'active' : '', false));
         }
-
         btns.appendChild(makeBtn('›', () => render(current + 1), '', current === total));
     }
 
