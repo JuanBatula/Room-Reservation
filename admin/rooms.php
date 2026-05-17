@@ -123,10 +123,12 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
         }
     }
 
+    // so rows = 10, divided by ROWS PER PAGE(5)
     function totalPages(rows) {
         return Math.max(1, Math.ceil(rows.length / ROWS_PER_PAGE));
     }
 
+    //shortcut for making the pagination buttons
     function makeBtn(label, onClick, extraClass, disabled) {
         const btn = document.createElement('button');
         let className = 'pg-btn';
@@ -144,6 +146,7 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
         return btn;
     }
 
+    //rendering the current page --------------------------------------
     function render(page) {
         const visibleRows = getFiltered();
         const total = totalPages(visibleRows);
@@ -156,12 +159,13 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
         allRows.forEach(r => r.style.display = 'none');
         visibleRows.forEach((r, i) => {
             if (i >= start && i < end) {
-                r.style.display = '';   // show
+                r.style.display = '';  
             } else {
-                r.style.display = 'none'; // hide
+                r.style.display = 'none'; 
             }
         });
 
+        // info pila ka rooms out of ----------------------
         info.textContent = visibleRows.length
         if (visibleRows.length > 0) {
             let first = start + 1;
@@ -172,15 +176,19 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
             info.textContent = 'No rooms found';
         }
 
-        // pagination buttons ni
+        // pagination buttons ni ---------------------------------
         btns.innerHTML = '';
+        //previous button
         btns.appendChild(makeBtn('‹', () => render(current - 1), '', current === 1));
+        //number buttons
         for (let p = 1; p <= total; p++) {
             btns.appendChild(makeBtn(p, () => render(p), p === current ? 'active' : '', false));
         }
+        //next button
         btns.appendChild(makeBtn('›', () => render(current + 1), '', current === total));
     }
 
+    //filter selection listener -----------------------------------
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             tabs.forEach(t => t.classList.remove('active'));

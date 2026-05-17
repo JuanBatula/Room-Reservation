@@ -70,10 +70,12 @@ $result = mysqli_query($connection, "SELECT u.* FROM tbuser u
     const btns  = document.getElementById('pgBtnsUsers');
     let current = 1;
 
+    // ex. number of users: 10, divided by rows per page (6)
     function totalPages() {
         return Math.max(1, Math.ceil(rows.length / ROWS_PER_PAGE));
     }
 
+    //page is 1 ----------------------------------------
     function render(page) {
         current = page;
         const start = (page - 1) * ROWS_PER_PAGE;
@@ -88,10 +90,10 @@ $result = mysqli_query($connection, "SELECT u.* FROM tbuser u
             }
         });
 
-        //info pila ka rooms out of ----------------------
-        const total = totalPages();
+        //info pila ka users out of ----------------------
         info.textContent = `Showing ${Math.min(start + 1, rows.length)}–${Math.min(end, rows.length)} of ${rows.length} users`;
-
+        
+        const total = totalPages();
         //pagination buttons ------------------------
         // prev button
         btns.innerHTML = '';
@@ -121,7 +123,7 @@ $result = mysqli_query($connection, "SELECT u.* FROM tbuser u
         btns.appendChild(next);
     }
 
-    //pag load sa page
+    //pag load sa page -----------------------------------
     render(1);
 })();
 </script>
