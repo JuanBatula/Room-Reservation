@@ -128,7 +128,7 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
         return Math.max(1, Math.ceil(rows.length / ROWS_PER_PAGE));
     }
 
-    //shortcut for making the pagination buttons
+    //shortcut ni for making the pagination buttons
     function makeBtn(label, onClick, extraClass, disabled) {
         const btn = document.createElement('button');
         let className = 'pg-btn';
@@ -156,6 +156,7 @@ $result = mysqli_query($connection, "SELECT * FROM tbroom ORDER BY room_id ASC")
         const start = (current - 1) * ROWS_PER_PAGE;
         const end   = start + ROWS_PER_PAGE;
 
+        // DISPLAYING SA MGA ROOMS OF CURRENT PAGE
         allRows.forEach(r => r.style.display = 'none');
         visibleRows.forEach((r, i) => {
             if (i >= start && i < end) {
